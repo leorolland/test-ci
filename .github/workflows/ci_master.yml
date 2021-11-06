@@ -24,13 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: Setup Deno environment
-        uses: denolib/setup-deno@v2.3.0
-
-      # Runs a single command using the runners shell
-      - name: Unit test
-        run: deno test
         
       - name: Action For Semantic Release
         uses: cycjimmy/semantic-release-action@v2.6.0
