@@ -23,9 +23,20 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        
-      - name: Action For Semantic Release
-        uses: cycjimmy/semantic-release-action@v2.6.0
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Semantic Release
+      uses: cycjimmy/semantic-release-action@v3
+      with:
+        semantic_version: 16
+        # you can set branches for semantic-release above v16.
+        branches: |
+          [
+            'master',
+            {
+              name: 'alpha',
+              prerelease: true
+            }
+          ]
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
