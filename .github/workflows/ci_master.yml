@@ -20,6 +20,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Semantic Release - prepare
+      run: |
+          cat <<EOF > package.json
+          {
+            "name": "test",
+            "private": true
+          }
+          EOF
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v3
       with:
